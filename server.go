@@ -21,6 +21,7 @@ func getPort() string {
 
 func main() {
 	e := echo.New()
+	e.Use(middleware.CORS())
 	api := e.Group("/api")
 	api.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Homework API")
@@ -34,6 +35,5 @@ func main() {
 	api.GET("/movies/popular", handlers.GetMoviePopular())
 	api.GET("/movies/soldout", handlers.GetMovieSoldout())
 	api.GET("/movies/iscoming", handlers.GetMovieIscoming())
-	e.Use(middleware.CORS())
 	e.Logger.Fatal(e.Start(getPort()))
 }
