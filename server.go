@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/labstack/echo/v4"
-	// "github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func getPort() string {
@@ -34,6 +34,6 @@ func main() {
 	api.GET("/movies/popular", handlers.GetMoviePopular())
 	api.GET("/movies/soldout", handlers.GetMovieSoldout())
 	api.GET("/movies/iscoming", handlers.GetMovieIscoming())
-	// e.Use(middleware.CORS())
+	e.Use(middleware.CORS())
 	e.Logger.Fatal(e.Start(getPort()))
 }
