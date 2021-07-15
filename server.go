@@ -29,7 +29,11 @@ func main() {
 		return c.String(http.StatusOK, "Homework API")
 	})
 	api.GET("/news", handlers.GetNews())
+	api.GET("/news/sport", handlers.GetNewsSport())
 	api.GET("/movies", handlers.GetMovie())
+	api.GET("/movies/popular", handlers.GetMoviePopular())
+	api.GET("/movies/soldout", handlers.GetMovieSoldout())
+	api.GET("/movies/iscoming", handlers.GetMovieIscoming())
 	// e.Use(middleware.CORS())
 	e.Logger.Fatal(e.Start(getPort()))
 }
